@@ -4,17 +4,16 @@ const commonConfig = require('./base.js');
 
 module.exports = function() {
   return webpackMerge(commonConfig(), {
+    output: {
+      path: path.join(__dirname, '../dist'),
+      filename: '[name].bundle.js',
+      publicPath: 'http://localhost:8080',
+      sourceMapFilename: '[name].map'
+    },
     devtool: 'cheap-module-source-map',
     devServer: {
-      hot: true,
-      inline: true,
-      port: 8080,
-      host: 'localhost',
       historyApiFallback: true,
-      noInfo: false,
       stats: 'minimal',
-      publicPath: '/',
-      clientLogLevel: 'none'
     }
   });
 };

@@ -6,13 +6,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = function() {
   return {
     entry: {
-      'main': ['./src/js/main.js'],
-      'vendor': './src/js/vendor.ts'
-    },
-    /*resolve: {
-      extensions: ['', '.jsx', '.js', 'css', 'scss'],
-      modules: [path.join(__dirname, 'src'), 'node_modules']
-    },*/
+			main: ['eventsource-polyfill','webpack-hot-middleware/client?reload=true','./src/js/main.js']
+		},
+		target: 'web',
     module: {
       loaders: [{
         test: /\.ts?$/,
@@ -30,7 +26,7 @@ module.exports = function() {
         loaders: ['to-string-loader', 'css-loader']
       }, {
         test: /\.scss?$/,
-        loaders: ['style', 'css', 'sass']
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
       }, {
           test: /\.(jpg|png|gif)$/,
           loader: 'file-loader?name=assets/[hash].[name]'
@@ -40,8 +36,10 @@ module.exports = function() {
       }]
     },
     plugins: [
+			new webpack.HotModuleReplacementPlugin(),
+			new webpack.NoErrorsPlugin(),
       new webpack.optimize.CommonsChunkPlugin({
-          name: ['main','vendor'].reverse()
+          name: ['main'].reverse()
       }),
       new HtmlWebpackPlugin({
           template: 'src/index.html',

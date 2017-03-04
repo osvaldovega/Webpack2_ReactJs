@@ -5,6 +5,7 @@ class Home extends Component {
       return (
          <article>
             <h1>Home...</h1>
+            <p>This is a test 77</p>
          </article>
       )
    }

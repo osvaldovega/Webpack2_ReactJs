@@ -4,7 +4,7 @@
   "description": "Webpack",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --env=dev --progress",
+    "dev": "webpack-dev-server --env=dev",
     "prod": "rimraf dist && webpack --env=prod --progress --profile --colors",
     "server": "node express.js"
   },

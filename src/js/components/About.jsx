@@ -4,7 +4,8 @@ class About extends Component {
    render() {
       return (
          <article>
-            <h1>About...</h1>
+            <h1>{this.props.name}</h1>
+            <h3>About...</h3>
          </article>
       )
    }

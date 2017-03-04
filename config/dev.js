@@ -15,7 +15,9 @@ module.exports = function() {
     devServer: {
       contentBase: path.join(__dirname, '../dist'),
       inline: true,
-      stats: 'minimal'
+      stats: 'minimal',
+      host: 'localhost',
+      port: 9000
     },
     plugins: [
 			new webpack.HotModuleReplacementPlugin()

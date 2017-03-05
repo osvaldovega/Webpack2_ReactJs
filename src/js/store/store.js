@@ -33,9 +33,6 @@ import AppReducer from '../reducers/AppReducer';
 
 const logger = createLogger();
 
-const store = createStore(
-  AppReducer,
-  applyMiddleware(thunk, promise, logger)
-);
+const store = createStore(AppReducer, applyMiddleware(thunk, promise, logger));
 
 export default store;

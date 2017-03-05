@@ -10,6 +10,9 @@ module.exports = function() {
       vendor: ['react','redux']
 		},
 		target: 'web',
+    resolve: {
+      extensions: [".js", ".jsx"]
+    },
     module: {
       loaders: [{
         test: /\.ts?$/,

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import NavMenu from './Menu/Menu';
-import classNames from 'classnames';
 
 class Header extends Component {
 	render() {
@@ -9,9 +10,21 @@ class Header extends Component {
 				<h1>{this.props.appName}</h1>
 				<NavMenu />
 			</article>
-			);
+		);
 	}
 
 }
 
-export default Header;
+// Ge the state from the store */
+function mapStateToProps(state) {
+	return {
+		appName: state.App.appName
+	};
+}
+
+// Trigger the actions
+function matchDispatchToProps(dispatch){
+	return bindActionCreators({ }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Header);

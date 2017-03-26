@@ -1,8 +1,6 @@
 export default {
-  appName: 'ReactJS - Webpack',
-  tabs: {
-    home: true,
-    about: false,
-    contact: false
-  }
+	appName: 'ReactJS - Webpack',
+	nasa:[],
+	dataFetched: false,
+	errorFetching: false	
 };

@@ -1,31 +1,26 @@
 import * as types from './actionTypes';
+import NasaService from '../services/NasaService';
 
-// If you want to use just one action to handle the tab changes
-export function selectedMenu(tab) {
-  return {
-    type: 'TAB_MENU_SELECTED',
-    payload: tab
-  };
-};
+// Service Instance
+const nasaService = new NasaService();
 
-// Handle each tab by separate
-export function homeSelected() {
-  return {
-    type: types.TAB_HOME_SELECTED,
-    payload: true
-  };
+function fetchData(data) {
+	return {
+		type: types.FETCHING_DATA_SUCCESS,
+		payload: data
+	};
 }
 
-export function aboutSelected() {
-  return {
-    type: types.TAB_ABOUT_SELECTED,
-    payload: true
-  };
+function errorFetchingData(err) {
+	return {
+		type: types.FETCHING_DATA_ERROR,
+		payload: err
+	};
 }
 
-export function contactSelected() {
-  return {
-    type: types.TAB_CONTACT_SELECTED,
-    payload: true
-  };
+// Gets data from NASA
+export function fetchingData() {
+	return dispatch => nasaService.getNasaData()
+		.then((result) => dispatch(fetchData(result)))
+		.catch((err) => dispatch(errorFetchingData(`Fail => ${err}`)));
 }

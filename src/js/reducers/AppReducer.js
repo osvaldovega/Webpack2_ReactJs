@@ -4,37 +4,28 @@ import * as types from '../actions/actionTypes';
 
 function App(state = initState, action) {
   // Make a copy of the tabs from the state, this will be change
-  const newTabs = Object.assign({}, state.tabs);
+	let newNasa = Object.assign({}, state.nasa);
 
-  switch (action.type) {
-    case types.TAB_MENU_SELECTED:
-      return state;
-      break;
+	switch (action.type) {
+	case types.FETCHING_DATA_SUCCESS:
+		newNasa = action.payload;
+		return {
+			...state,
+			nasa: newNasa,
+			dataFetched: true
+		};
 
-    case types.TAB_HOME_SELECTED:
-      newTabs.home = action.payload;
-      newTabs.about =  false;
-      newTabs.contact = false;
-      break;
+	case types.FETCHING_DATA_ERROR:
+		return {
+			...state,
+			dataFetched: false,
+			errorFetching: true
+		};
 
-    case types.TAB_ABOUT_SELECTED:
-      newTabs.home = false;
-      newTabs.about =  action.payload;
-      newTabs.contact = false;
-      break;
-
-    case types.TAB_CONTACT_SELECTED:
-      newTabs.home = false;
-      newTabs.about =  false;
-      newTabs.contact = action.payload;
-      break;
-
-    default:
-      return state;
-  }
-
-  return {...state, tabs: newTabs};
-};
+	default:
+		return state;
+	}
+}
 
 const AppReducer = combineReducers({ App });
 

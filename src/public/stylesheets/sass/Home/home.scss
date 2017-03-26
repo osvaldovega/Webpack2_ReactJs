@@ -1,7 +1,21 @@
 .Home {
 	width: 85%;
 	margin: 25px auto;
-	padding: 10px;	
+	padding: 10px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px #9DD4EB;
+}
+
+.Error_Message {
+	text-align: center;
+	font-size: 25px;
+	color: #FF5555;
+	margin: 25px 0 0 0;
+}
+
+.Loading {
+	text-align: center;
+	font-size: 25px;
+	color: #7F848D;
+	margin: 25px 0 0 0;
 }

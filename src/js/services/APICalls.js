@@ -35,7 +35,7 @@ export default class APICalls {
 
 	queryParams(params) {
 		return Object.keys(params)
-			.map(k => `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`)
+			.map(p => `${encodeURIComponent(p)}=${encodeURIComponent(params[p])}`)
 			.join('&');
 	}
 

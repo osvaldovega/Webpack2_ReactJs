@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = function() {
   return {
     entry: {
-			main: ['eventsource-polyfill','./src/js/main.js'],
+			main: ['eventsource-polyfill','webpack-hot-middleware/client?reload=true','./src/js/main.js'],
       vendor: ['react','redux']
 		},
 		target: 'web',
@@ -47,6 +47,8 @@ module.exports = function() {
       }]
     },
     plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin(),
       new webpack.optimize.CommonsChunkPlugin({
           name: ['main','vendor']
       }),

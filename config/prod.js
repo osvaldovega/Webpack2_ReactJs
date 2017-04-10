@@ -11,10 +11,12 @@ module.exports = function() {
       publicPath: '/'
     },
     plugins: [
+      new webpack.optimize.OccurrenceOrderPlugin(), // optimize the order the files are bundled
       new webpack.LoaderOptionsPlugin({
   			minimize: true,
         debug: false
   		}),
+      new webpack.optimize.DedupePlugin(), // eliminates duplicate packages
       new webpack.DefinePlugin({
         'process.env': {
           'NODE_ENV': JSON.stringify('prod'),
@@ -22,6 +24,7 @@ module.exports = function() {
       }),
       new webpack.optimize.UglifyJsPlugin({
         beautify: false,
+        sourceMap: false,
         mangle: {
           screw_ie8: true,
           keep_fnames: true

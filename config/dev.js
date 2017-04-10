@@ -13,7 +13,7 @@ module.exports = function() {
     },
     devtool: 'eval',
     devServer: {
-      contentBase: path.join(__dirname, '../dist'),
+      contentBase: path.join(__dirname, '../src'),
       inline: true,
       stats: 'minimal',
       host: 'localhost',

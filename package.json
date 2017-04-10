@@ -28,7 +28,6 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
     "eventsource-polyfill": "^0.9.6",
-    "express": "^4.14.1",
     "html-webpack-plugin": "^2.26.0",
     "node-sass": "^4.4.0",
     "redux-logger": "^2.8.1",

@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const commonConfig = require('./base.js');
 
-module.exports = function() {
+module.exports = function () {
   return webpackMerge(commonConfig(), {
     output: {
       path: path.join(__dirname, '../dist'),
@@ -20,7 +20,7 @@ module.exports = function() {
       port: 9000
     },
     plugins: [
-			new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin()      
     ]
   });
 };

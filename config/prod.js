@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const commonConfig = require('./base.js');
 
-module.exports = function() {
+module.exports = function () {
   return webpackMerge(commonConfig(), {
     output: {
       path: path.join(__dirname, '../dist'),
@@ -13,13 +13,13 @@ module.exports = function() {
     plugins: [
       new webpack.optimize.OccurrenceOrderPlugin(), // optimize the order the files are bundled
       new webpack.LoaderOptionsPlugin({
-  			minimize: true,
+        minimize: true,
         debug: false
-  		}),
+      }),
       new webpack.optimize.DedupePlugin(), // eliminates duplicate packages
       new webpack.DefinePlugin({
         'process.env': {
-          'NODE_ENV': JSON.stringify('prod'),
+          NODE_ENV: JSON.stringify('prod')
         }
       }),
       new webpack.optimize.UglifyJsPlugin({

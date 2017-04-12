@@ -5,11 +5,11 @@ import { fetchingData } from '../actions/actions';
 import Rover from './Rover/Rover';
 
 class Home extends Component {
-	componentWillMount() {
-		if(!this.props.dataFetched) {
-			this.props.fetchingData();
-		}
-	}
+  componentWillMount() {
+    if (!this.props.dataFetched) {
+      this.props.fetchingData();
+    }
+  }
 
 	render() {
 		let data = '';
@@ -21,8 +21,6 @@ class Home extends Component {
 		} else {
 			data = (<p className={'Loading'}>Loading...</p>);
 		}
-
-
 
 		return (
        <article className={'Home'}>

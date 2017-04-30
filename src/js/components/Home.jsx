@@ -1,48 +1,67 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchingData } from '../actions/actions';
 import Rover from './Rover/Rover';
+import * as types from '../common/constants';
 
 class Home extends Component {
-  componentWillMount() {
+  componentDidMount() {
+    // If the data is NOT fetched then go
     if (!this.props.dataFetched) {
       this.props.fetchingData();
     }
   }
 
-	render() {
-		let data = '';
-		if (this.props.errorFetching) {
-			data = (<div className={'Error_Message'}>Error getting data from NASA...</div>);
-		} else if(this.props.dataFetched) {
-			data = this.props.nasa.photos.map((element, index) =>
-				<Rover key={index} data={element} />);
-		} else {
-			data = (<p className={'Loading'}>Loading...</p>);
-		}
+  render() {
+    const { errorFetching, dataFetched, nasa } = this.props;
+    let data = '';
 
-		return (
+    if (errorFetching.status) {
+      data = (<div className={'Error_Message'}>{types.HOME_ERROR_MESSAGE_1} - {errorFetching.msg}</div>);
+    } else if (dataFetched) {
+      data = nasa.photos.map((element, index) =>
+        <Rover key={index} element={element} />);
+    } else {
+      data = (<p className={'Loading'}>{types.HOME_LOADING}</p>);
+    }
+
+    return (
        <article className={'Home'}>
-          <h1>Home - NASA pics from Rover</h1>
-					{data}
+          <h1>{types.HOME_MAIN_TITLE}</h1>
+          {data}
        </article>
-		);
-	}
+    );
+  }
 }
+
+// ======================================= //
+// PROP TYPES
+// ======================================= //
+Home.propTypes = {
+  nasa: PropTypes.array.isRequired,
+  dataFetched: PropTypes.bool.isRequired,
+  errorFetching: PropTypes.object.isRequired,
+  fetchingData: PropTypes.func
+};
+
+// ======================================= //
+// REDUX PART
+// ======================================= //
 
 // Ge the state from the store
 function mapStateToProps(state) {
-	return {
-		nasa: state.App.nasa,
-		dataFetched: state.App.dataFetched,
-		errorFetching: state.App.errorFetching
-	};
+  return {
+    nasa: state.App.nasa,
+    dataFetched: state.App.dataFetched,
+    errorFetching: state.App.errorFetching
+  };
 }
 
 // Trigger the actions
-function matchDispatchToProps(dispatch){
-	return bindActionCreators({ fetchingData }, dispatch);
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchingData }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Home);

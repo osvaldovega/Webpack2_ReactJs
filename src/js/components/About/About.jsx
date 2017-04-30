@@ -14,10 +14,10 @@ class About extends Component {
     console.log('componentWillReceiveProps', nextProps);
   }
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('shouldComponentUpdate');
+    console.log('shouldComponentUpdate', nextProps, nextState);
   }
   componentWillUpdate(nextProps, nextState) {
-    console.log('componentWillUpdate');
+    console.log('componentWillUpdate', nextProps, nextState);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -30,11 +30,11 @@ class About extends Component {
 
   render() {
     return (
-       <article className={'About'}>
-          <h1>About</h1>
-          <p>This is the about page</p>
-       </article>
-    )
+      <article className={'About'}>
+        <h1>About</h1>
+        <p>This is the about page</p>
+      </article>
+    );
   }
 }
 

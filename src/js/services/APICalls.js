@@ -17,7 +17,7 @@ export default class APICalls {
 
 		// If there is an ERROR
 		if(response.status >= 400) {
-			throw new Error(`ERROR => ${response.statusText}`);
+			throw new Error(`${response.statusText}`);
 		}
 	}
 

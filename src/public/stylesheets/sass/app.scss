@@ -1,8 +1,17 @@
+@mixin background($imgPath, $position:0 0, $repeat: repeat) {
+	background: {
+        image: url($imgPath);
+        position: $position;
+        repeat: $repeat;
+    }
+}
+
 * {
 	margin: 0px;
 	padding: 0px;
 }
 
 body {
-	background-color: white;
+	font-family: verdana;
+	@include background('../../img/2.png');
 }

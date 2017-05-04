@@ -49,7 +49,7 @@ module.exports = function () {
       },
       {
         test: /\.(jpg|png|gif)$/,
-        loader: 'file-loader?name=assets/[hash].[name]'
+        loader: 'file-loader'
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
@@ -65,7 +65,7 @@ module.exports = function () {
           module.context && module.context.indexOf('node_modules') !== -1
       }),
       new HtmlWebpackPlugin({
-        template: path.join(__dirname, '../src/index.html'), // Load athe template that you need
+        template: path.join(__dirname, '../src/public/index.html'), // Load athe template that you need
         inject: 'body',
         has: true,
         chunks: ['main', 'vendor'],

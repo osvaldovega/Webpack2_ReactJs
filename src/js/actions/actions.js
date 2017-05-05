@@ -24,3 +24,10 @@ export function fetchingData() {
     .then(result => dispatch(fetchData(result)))
     .catch(err => dispatch(errorFetchingData(`${err}`)));
 }
+
+// Trigger action ONLY if SAGA is being used
+export function fetchDataWithSaga() {
+  return {
+    type: types.FETCHING_DATA
+  };
+}

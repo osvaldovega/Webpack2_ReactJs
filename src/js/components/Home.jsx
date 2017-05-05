@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchingData } from '../actions/actions';
-import Rover from './Rover/Rover';
+import { fetchingData, fetchDataWithSaga } from '../actions/actions';
+import Rover from './Rover/Rover.jsx';
 import * as types from '../common/constants';
 
 class Home extends Component {
   componentDidMount() {
     // If the data is NOT fetched then go
     if (!this.props.dataFetched) {
+      // With REDUX THUNK
       this.props.fetchingData();
+
+      // With REDUX SAGA
+      // this.props.fetchDataWithSaga();
     }
   }
 
@@ -61,7 +65,7 @@ function mapStateToProps(state) {
 
 // Trigger the actions
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchingData }, dispatch);
+  return bindActionCreators({ fetchingData, fetchDataWithSaga }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Home);

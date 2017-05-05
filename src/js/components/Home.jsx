@@ -15,7 +15,7 @@ class Home extends Component {
   }
 
   render() {
-    const { errorFetching, dataFetched, nasa } = this.props;
+    const { nasa, errorFetching, dataFetched } = this.props;
     let data = '';
 
     if (errorFetching.status) {
@@ -40,7 +40,7 @@ class Home extends Component {
 // PROP TYPES
 // ======================================= //
 Home.propTypes = {
-  nasa: PropTypes.array.isRequired,
+  nasa: PropTypes.object.isRequired,
   dataFetched: PropTypes.bool.isRequired,
   errorFetching: PropTypes.object.isRequired,
   fetchingData: PropTypes.func

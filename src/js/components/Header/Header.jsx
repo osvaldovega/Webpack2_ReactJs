@@ -29,7 +29,7 @@ Header.propTypes = {
 // Ge the state from the store */
 function mapStateToProps(state) {
   return {
-    appName: state.App.appName
+    appName: state.universe.appName
   };
 }
 

@@ -44,21 +44,20 @@ ReactDOM.render(
 
 In
 #### `src/js/components/Home.jsx`
-Comment line this.props.fetchingData(); and uncomment line this.props.fetchDataWithSaga();
+Comment line this.props.fetchApodData(); and uncomment line this.props.fetchApodDataSaga();
 
 ```javascript
 ...
-class Home extends Component {
-  componentDidMount() {
-    // If the data is NOT fetched then go
-    if (!this.props.dataFetched) {
-      // With REDUX THUNK
-      // this.props.fetchingData();
+componentDidMount() {
+  // If the data is NOT fetched then go
+  if (!this.props.dataFetched) {
+    // With REDUX THUNK
+    // this.props.fetchApodData();
 
-      // With REDUX SAGA
-      this.props.fetchDataWithSaga();
-    }
+    // With REDUX SAGA
+    this.props.fetchApodDataSaga();
   }
+}
   ...
 ```
 

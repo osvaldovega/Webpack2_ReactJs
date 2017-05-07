@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchingData, fetchDataWithSaga } from '../actions/actions';
-import Rover from './Rover/Rover.jsx';
+import { fetchApodData, fetchApodDataSaga } from '../actions';
+import Apod from './Apod/Apod.jsx';
 import * as types from '../common/constants';
 
 class Home extends Component {
@@ -11,29 +11,27 @@ class Home extends Component {
     // If the data is NOT fetched then go
     if (!this.props.dataFetched) {
       // With REDUX THUNK
-      this.props.fetchingData();
+      this.props.fetchApodData();
 
       // With REDUX SAGA
-      // this.props.fetchDataWithSaga();
+      // this.props.fetchApodDataSaga();
     }
   }
 
   render() {
-    const { nasa, errorFetching, dataFetched } = this.props;
+    const { apod, errorFetching, dataFetched } = this.props;
     let data = '';
 
     if (errorFetching.status) {
       data = (<div className={'Error_Message'}>{types.HOME_ERROR_MESSAGE_1} - {errorFetching.msg}</div>);
     } else if (dataFetched) {
-      data = nasa.photos.map((element, index) =>
-        <Rover key={index} element={element} />);
+      data = (<Apod element={apod} />);
     } else {
       data = (<p className={'Loading'}>{types.HOME_LOADING}</p>);
     }
 
     return (
        <article className={'Home'}>
-          <h1>{types.HOME_MAIN_TITLE}</h1>
           {data}
        </article>
     );
@@ -44,7 +42,7 @@ class Home extends Component {
 // PROP TYPES
 // ======================================= //
 Home.propTypes = {
-  nasa: PropTypes.object.isRequired,
+  apod: PropTypes.object.isRequired,
   dataFetched: PropTypes.bool.isRequired,
   errorFetching: PropTypes.object.isRequired,
   fetchingData: PropTypes.func
@@ -57,15 +55,15 @@ Home.propTypes = {
 // Ge the state from the store
 function mapStateToProps(state) {
   return {
-    nasa: state.App.nasa,
-    dataFetched: state.App.dataFetched,
-    errorFetching: state.App.errorFetching
+    apod: state.universe.apod.data,
+    dataFetched: state.universe.apod.dataFetched,
+    errorFetching: state.universe.apod.errorFetching
   };
 }
 
 // Trigger the actions
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchingData, fetchDataWithSaga }, dispatch);
+  return bindActionCreators({ fetchApodData, fetchApodDataSaga }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Home);

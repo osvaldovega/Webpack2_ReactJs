@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 const ENTRY = process.env.NODE_ENV === 'dev '
-      ? ['eventsource-polyfill', 'webpack-hot-middleware/client?reload=true', './src/js/main.js']
+      ? ['eventsource-polyfill', './src/js/main.js']
       : ['eventsource-polyfill', './src/js/main.js'];
 
 module.exports = function () {
@@ -49,7 +49,7 @@ module.exports = function () {
       },
       {
         test: /\.(jpg|png|gif)$/,
-        loader: 'file-loader'
+        loader: 'file-loader?name=/public/img/[sha512:hash:base64:7].[ext]'
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,

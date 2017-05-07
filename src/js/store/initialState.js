@@ -1,9 +1,19 @@
 export default {
-  appName: 'ReactJS - Webpack',
-  nasa: {},
-  dataFetched: false,
-  errorFetching: {
-    status: false,
-    msg: ''
+  appName: 'Universe',
+  rover: {
+    data: {},
+    dataFetched: false,
+    errorFetching: {
+      status: false,
+      msg: ''
+    }
+  },
+  apod: {
+    data: {},
+    dataFetched: false,
+    errorFetching: {
+      status: false,
+      msg: ''
+    }
   }
 };

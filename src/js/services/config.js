@@ -1,6 +1,10 @@
 module.exports = {
   nasa: {
-    url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=',
-    key: '<Put here you NASA API Key>'
+    base_url: 'https://api.nasa.gov/',
+    rovers_url_1: 'mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=',
+    rovers_url_2: 'mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=fhaz&api_key=',
+    rovers_url_3: 'mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=',
+    apod_url: 'planetary/apod?api_key=',
+    key: '<write here your NASA API Key>'
   }
 };

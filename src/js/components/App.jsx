@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from './Header/Header';
-import NavMenu from './Header/Menu/Menu';
+import Header from './Header/Header.jsx';
+import NavMenu from './Header/Menu/Menu.jsx';
 import '../../public/stylesheets/sass/index.scss';
 
 class App extends Component {

@@ -18,42 +18,47 @@ module.exports = function () {
       modules: [path.join(__dirname, 'src'), 'node_modules']
     },
     module: {
-      loaders: [{
+      rules: [
+      {
         test: /\.ts?$/,
-        loaders: ['awesome-typescript-loader'],
+        use: ['awesome-typescript-loader'],
         exclude: [/\.(spec|e2e)\.ts$/]
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: [/node_modules/],
-        query: {
-          presets: ['es2015', 'react', 'stage-2'] // stage-2 is need it to use ...spreadParameters in redux if not fails
-        }
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015', 'react', 'stage-2'] // stage-2 is need it to use ...spreadParameters in redux if not fails
+          }
+        },
+        exclude: [/node_modules/]
       },
       {
         test: /\.js?$/,
-        loader: 'babel-loader',
-        exclude: [/node_modules/],
-        query: {
-          presets: ['es2015', 'react', 'stage-2'] // stage-2 is need it to use ...spreadParameters in redux if not fails
-        }
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015', 'react', 'stage-2'] // stage-2 is need it to use ...spreadParameters in redux if not fails
+          }
+        },
+        exclude: [/node_modules/]
       },
       {
         test: /\.css?$/,
-        loaders: ['to-string-loader', 'css-loader']
+        use: ['to-string-loader', 'css-loader']
       },
       {
         test: /\.scss?$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', { loader: 'sass-loader', options: { sourceMap: true }}]
       },
       {
         test: /\.(jpg|png|gif)$/,
-        loader: 'file-loader?name=/public/img/[sha512:hash:base64:7].[ext]'
+        use: ['file-loader?name=/public/img/[sha512:hash:base64:7].[ext]']
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader?limit=100000'
+        use: ['url-loader?limit=100000']
       }]
     },
     plugins: [

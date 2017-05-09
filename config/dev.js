@@ -20,7 +20,7 @@ module.exports = function () {
       port: 9000
     },
     plugins: [
-      new webpack.HotModuleReplacementPlugin()      
+      new webpack.HotModuleReplacementPlugin()
     ]
   });
 };

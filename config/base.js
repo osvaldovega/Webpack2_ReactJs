@@ -50,11 +50,11 @@ module.exports = function () {
       },
       {
         test: /\.scss?$/,
-        use: ['style-loader', 'css-loader', { loader: 'sass-loader', options: { sourceMap: true }}]
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.(jpg|png|gif)$/,
-        use: ['file-loader?name=/public/img/[sha512:hash:base64:7].[ext]']
+        use: ['file-loader?name=src/public/img/[sha512:hash:base64:7].[ext]']
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,

@@ -1,11 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 const ENTRY = process.env.NODE_ENV === 'dev '
-      ? ['eventsource-polyfill', './src/js/main.js']
-      : ['eventsource-polyfill', './src/js/main.js'];
+      ? ['babel-polyfill', './src/js/main.js']
+      : ['babel-polyfill', './src/js/main.js'];
 
 module.exports = function () {
   return {
@@ -50,7 +51,7 @@ module.exports = function () {
       },
       {
         test: /\.scss?$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader!postcss-loader!sass-loader' })
       },
       {
         test: /\.(jpg|png|gif)$/,
@@ -69,6 +70,7 @@ module.exports = function () {
           // this assumes your vendor imports exist in the node_modules directory
           module.context && module.context.indexOf('node_modules') !== -1
       }),
+      new ExtractTextPlugin('[name].[hash].css'),
       new HtmlWebpackPlugin({
         template: path.join(__dirname, '../src/public/index.html'), // Load athe template that you need
         inject: 'body',

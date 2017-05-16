@@ -5,6 +5,8 @@ export const FETCHING_DATA = 'FETCHING_DATA';
 export const FETCHING_APOD_DATA = 'FETCHING_APOD_DATA';
 export const FETCHING_APOD_DATA_SUCCESS = 'FETCHING_APOD_DATA_SUCCESS';
 export const FETCHING_APOD_DATA_ERROR = 'FETCHING_APOD_DATA_ERROR';
+export const FETCHING_ROVER_DATA_SUCCESS = 'FETCHING_ROVER_DATA_SUCCESS';
+export const FETCHING_ROVER_DATA_ERROR = 'FETCHING_ROVER_DATA_ERROR';
 
 // HOME.jsx //
 export const HOME_MAIN_TITLE = 'Home';
@@ -16,5 +18,17 @@ export const ROVER_TITLE = 'Name';
 export const ROVER_DESCRIPTION_1 = 'Id';
 
 // MENU.JSX //
-export const MENU_LINK_1 = 'Home';
-export const MENU_LINK_2 = 'About';
+export const MENU_LINKS = [
+  {
+    title: 'Home',
+    path: '/'
+  },
+  {
+    title: 'Rover',
+    path: 'Rover'
+  },
+  {
+    title: 'About',
+    path: 'About'
+  }
+];

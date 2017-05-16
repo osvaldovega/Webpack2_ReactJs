@@ -4,10 +4,16 @@ import PropTypes from 'prop-types';
 class Apod extends Component {
   render() {
     const { element } = this.props;
+
+    // Check if is a video or pic to display
+    const media = element.url.includes('youtube')
+      ? <iframe src={element.url}></iframe>
+      : <img src={element.url} />;
+
     return (
       <article className={'Apod'}>
         <label>{element.title}</label>
-        <img src={element.hdurl} />
+        {media}
         <figcaption>{element.explanation}</figcaption>
         <span>by {element.copyright}</span>
       </article>

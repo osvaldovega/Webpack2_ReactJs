@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import HomeReducer from './HomeReducer';
+import RoverReducer from './RoverReducer';
 
 const reducers = combineReducers({
-  universe: HomeReducer
+  Apod: HomeReducer,
+  Rover: RoverReducer
 });
 
 export default reducers;

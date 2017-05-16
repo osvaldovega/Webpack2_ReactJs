@@ -23,11 +23,21 @@ class Home extends Component {
     let data = '';
 
     if (errorFetching.status) {
-      data = (<div className={'Error_Message'}>{types.HOME_ERROR_MESSAGE_1} - {errorFetching.msg}</div>);
+      data = (
+        <div className={'Error_Message'}>
+          {types.HOME_ERROR_MESSAGE_1} - {errorFetching.msg}
+        </div>
+      );
     } else if (dataFetched) {
-      data = (<Apod element={apod} />);
+      data = (
+        <Apod element={apod} />
+      );
     } else {
-      data = (<p className={'Loading'}>{types.HOME_LOADING}</p>);
+      data = (
+        <p className={'Loading'}>
+          {types.HOME_LOADING}
+        </p>
+      );
     }
 
     return (
@@ -55,9 +65,9 @@ Home.propTypes = {
 // Ge the state from the store
 function mapStateToProps(state) {
   return {
-    apod: state.universe.apod.data,
-    dataFetched: state.universe.apod.dataFetched,
-    errorFetching: state.universe.apod.errorFetching
+    apod: state.Apod.data,
+    dataFetched: state.Apod.dataFetched,
+    errorFetching: state.Apod.errorFetching
   };
 }
 

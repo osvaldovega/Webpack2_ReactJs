@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
     <section>
-      <Header>
+      <Header appName='Universe'>
         <NavMenu />
       </Header>
       {this.props.children}

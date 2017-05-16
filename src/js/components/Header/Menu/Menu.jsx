@@ -3,11 +3,25 @@ import { Link } from 'react-router';
 import * as types from '../../../common/constants';
 
 class NavMenu extends Component {
+  constructor() {
+    super();
+
+    this.menuLinks = this.menuLinks.bind(this);
+  }
+
+  menuLinks() {
+    if (typeof (types.MENU_LINKS) === 'object') {
+      return types.MENU_LINKS.map((e, i) =>
+        <Link key={i} to={e.path}>{e.title}</Link>
+      );
+    }
+    return '';
+  }
+
   render() {
     return (
       <section className={'Menu'}>
-        <Link to="/">{types.MENU_LINK_1}</Link>
-        <Link to="About">{types.MENU_LINK_2}</Link>
+        {this.menuLinks()}
       </section>
     );
   }

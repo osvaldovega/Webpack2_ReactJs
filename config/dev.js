@@ -15,6 +15,7 @@ module.exports = function () {
     devServer: {
       contentBase: path.join(__dirname, '../src'),
       inline: true,
+      historyApiFallback: true,
       stats: 'minimal',
       host: 'localhost',
       port: 9000

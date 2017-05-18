@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import CreateRoutes from './routes.jsx';
+import App from './components/App.jsx';
 import Store from './store/store';
 import SagaStore from './store/storeSaga';
 
@@ -18,5 +18,5 @@ const activeStore = Store;
 
 ReactDOM.render(
   <Provider store={activeStore}>
-    <CreateRoutes />
+    <App />
   </Provider>, rootElement);

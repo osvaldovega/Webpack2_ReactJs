@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as types from '../../common/constants';
 
 class Header extends Component {
   render() {
     return (
       <article className={'Header'}>
-        <h1>{this.props.appName}</h1>
+        <img src={types.APP_LOGO.path} alt={types.APP_LOGO.alt} title={types.APP_LOGO.title} />
         {this.props.children}
       </article>
     );

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "set NODE_ENV=dev && webpack-dev-server --env=dev --open",
-    "build": "rimraf dist && webpack --env=prod --progress --profile --color"
+    "build": "rimraf dist && set NODE_ENV=prod && webpack --env=prod --progress --profile --color"
   },
   "author": "Osvaldo Vega A",
   "license": "ISC",
@@ -33,6 +33,7 @@
     "node-sass": "^4.4.0",
     "postcss-loader": "^2.0.5",
     "redux-devtools-extension": "^2.13.2",
+    "redux-immutable-state-invariant": "^2.0.0",
     "redux-logger": "^2.8.1",
     "redux-promise": "^0.5.3",
     "redux-saga": "^0.15.3",

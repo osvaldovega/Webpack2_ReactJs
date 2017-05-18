@@ -1,8 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
+import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import createLogger from 'redux-logger';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import Reducers from '../reducers';
 
 
@@ -32,8 +32,23 @@ import Reducers from '../reducers';
 * it will log thunk and promise, not actual actions
 */
 
-const logger = createLogger();
-const middleware = [thunk, promise, logger];
-const store = createStore(Reducers, composeWithDevTools(applyMiddleware(...middleware)));
+// Check if the middlewares to apply are for prod or dev
+function middlewareFunc() {
+  const isProd = process.env.NODE_ENV === 'prod';
+
+  const reduxDevToolExt = (!isProd && window.devToolsExtension)
+    ? window.devToolsExtension()
+    : f => f;
+
+  const middlewares = [thunk, promise, reduxImmutableStateInvariant()];
+
+  if (!isProd) {
+    middlewares.push(createLogger());
+  }
+
+  return compose(applyMiddleware(...middlewares), reduxDevToolExt);
+}
+
+const store = createStore(Reducers, middlewareFunc());
 
 export default store;

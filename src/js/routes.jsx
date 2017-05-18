@@ -12,8 +12,8 @@ class CreateRoutes extends Component {
 			<Router history={browserHistory}>
         <Route path="/" component={App}>
 					<IndexRoute component={Home} />
-					<Route path='Rover' component={Rover} />
-					<Route path="About" component={About} />
+					<Route path='/Rover' component={Rover} />
+					<Route path="/About" component={About} />
         </Route>
 			</Router>);
 	}

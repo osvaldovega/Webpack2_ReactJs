@@ -26,17 +26,7 @@ module.exports = function () {
         exclude: [/\.(spec|e2e)\.ts$/]
       },
       {
-        test: /\.jsx?$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2015', 'react', 'stage-2'] // stage-2 is need it to use ...spreadParameters in redux if not fails
-          }
-        },
-        exclude: [/node_modules/]
-      },
-      {
-        test: /\.js?$/,
+        test: /\.(js|jsx)?$/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -55,7 +45,7 @@ module.exports = function () {
       },
       {
         test: /\.(jpg|png|gif)$/,
-        use: ['file-loader?name=src/public/img/[sha512:hash:base64:7].[ext]']
+        use: ['file-loader?name=assets/img/[sha512:hash:base64:7].[ext]']
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
@@ -70,7 +60,7 @@ module.exports = function () {
           // this assumes your vendor imports exist in the node_modules directory
           module.context && module.context.indexOf('node_modules') !== -1
       }),
-      new ExtractTextPlugin('[name].[hash].css'),
+      new ExtractTextPlugin('assets/css/[name].[hash].css'),
       new HtmlWebpackPlugin({
         template: path.join(__dirname, '../src/public/index.html'), // Load athe template that you need
         inject: 'body',

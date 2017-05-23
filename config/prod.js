@@ -7,7 +7,8 @@ module.exports = function () {
   return webpackMerge(commonConfig(), {
     output: {
       path: path.join(__dirname, '../dist'),
-      filename: '[name].bundle.js',
+      filename: 'assets/js/[name].[hash].bundle.js',
+      chunkFilename: 'assets/js/[id].[hash].bundle.js',
       publicPath: '/'
     },
     plugins: [
@@ -16,7 +17,6 @@ module.exports = function () {
         minimize: true,
         debug: false
       }),
-      new webpack.optimize.DedupePlugin(), // eliminates duplicate packages
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify('prod')

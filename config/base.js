@@ -41,7 +41,10 @@ module.exports = function () {
         },
         {
           test: /\.scss?$/,
-          loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader!postcss-loader!sass-loader' })
+          loader: ExtractTextPlugin.extract({
+            fallbackLoader: 'style-loader',
+            loader: 'css-loader!postcss-loader!sass-loader?outputStyle=expanded&includePaths[]=' + path.resolve(__dirname, '../node_modules/compass-mixins/lib')
+          })
         },
         {
           test: /\.(jpg|png|gif)$/,

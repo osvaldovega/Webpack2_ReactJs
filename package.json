@@ -49,6 +49,7 @@
   "dependencies": {
     "babel": "^6.5.2",
     "babel-polyfill": "^6.23.0",
+    "compass-mixins": "^0.12.10",
     "es6-promise": "^4.1.0",
     "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.5.8",

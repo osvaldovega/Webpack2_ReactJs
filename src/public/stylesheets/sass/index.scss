@@ -1,10 +1,6 @@
-// Partials
-@import "partials/variables";
-@import "partials/mixins";
-@import "partials/reset";
-
 // Custom layaout
-@import "./partials/base";
+@import './partials/base';
+@import './App/app';
 @import './Header/header';
 @import './Header/menu';
 @import './Home/home';

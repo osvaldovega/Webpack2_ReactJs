@@ -5,7 +5,7 @@ This is a simple example of ReactJS using Redux Thunk and Redux Saga
 
 # Getting started
 
-## Install
+## Install the repo with npm
 
 ```sh
 $ npm install
@@ -23,12 +23,12 @@ $ npm run start
 
 To use Redux Saga you will need to make changes in 2 files
 
-#### `src/js/main.js`
+#### `src/js/HOC/ComponentToRender.js`
 and
 #### `src/js/components/Home.jsx`
 
 In
-#### `src/js/main.js`
+#### `src/js/HOC/ComponentToRender.js`
 Uncomment the activeStore = SagaStore and comment the line where activeStore=Store
 
 ```javascript
@@ -36,10 +36,6 @@ Uncomment the activeStore = SagaStore and comment the line where activeStore=Sto
 // const activeStore = Store;
 const activeStore = SagaStore;
 
-ReactDOM.render(
-  <Provider store={activeStore}>
-    <CreateRoutes />
-  </Provider>, rootElement);
 ```
 
 In

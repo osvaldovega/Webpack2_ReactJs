@@ -8,7 +8,7 @@
     "build": "rimraf dist && set NODE_ENV=prod && webpack --progress --profile --color --bail"
   },
   "author": "Osvaldo Vega A",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^7.0.1",
     "awesome-typescript-loader": "^3.0.0-beta.18",

@@ -4,7 +4,7 @@
   "description": "Webpack",
   "main": "index.js",
   "scripts": {
-    "start": "set NODE_ENV=dev && webpack-dev-server --env=dev --open",
+    "start": "set NODE_ENV=dev && webpack-dev-server --open",
     "build": "rimraf dist && set NODE_ENV=prod && webpack --progress --profile --color --bail"
   },
   "author": "Osvaldo Vega A",
